@@ -1,0 +1,38 @@
+{
+  "greenhouse-heater": {
+    "width": 4032,
+    "height": 3024
+  },
+  "greenhouse-rows-1": {
+    "width": 4032,
+    "height": 3024
+  },
+  "greenhouse-rows-2": {
+    "width": 4032,
+    "height": 3024
+  },
+  "kids-sowing": {
+    "width": 3024,
+    "height": 4032
+  },
+  "seedlings-dew": {
+    "width": 3024,
+    "height": 4032
+  },
+  "seedlings-perlite": {
+    "width": 1440,
+    "height": 1800
+  },
+  "sown-trays": {
+    "width": 3024,
+    "height": 4032
+  },
+  "squash-in-hands": {
+    "width": 3024,
+    "height": 4032
+  },
+  "tomato-crates": {
+    "width": 3024,
+    "height": 4032
+  }
+}

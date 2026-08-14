@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------------ */
+/* Design tokeny — jediné místo, kde jsou definované barvy, písma a stíny.  */
+/* Tailwind z nich generuje utility (bg-cream, text-ink, font-display, …).  */
+/* ------------------------------------------------------------------------ */
+@theme {
+  /* Papír a inkoust (kontrasty ověřené: ink 10.9:1, muted 6.6:1 na cream) */
+  --color-cream: #faf6ef;
+  --color-paper: #fffefa;
+  --color-sunken: #f1eae0;
+  --color-ink: #1f3a2d;
+  --color-muted: #46594c;
+  --color-line: #e2d9ca;
+  /* Značkový gradient z IG loga — POUZE dekor, nikdy text */
+  --color-teal: #2ab3a3;
+  --color-lime: #9bc53d;
+  --color-lime-soft: #dcebb4;
+  /* Interaktivní zelené (bílý text 5.3:1 AA / odkazy 7.2:1) */
+  --color-leaf: #0f6f5f;
+  --color-leaf-deep: #0a5c50;
+  --color-mint: #dcede6;
+  /* Terakota — CTA „Do poptávky" (bílý text 4.9:1 AA) */
+  --color-terra: #b4512e;
+  --color-terra-deep: #9c4526;
+  --color-terra-soft: #f6e3d9;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+
+  --shadow-soft:
+    0 1px 2px rgb(31 61 43 / 0.05), 0 10px 30px -12px rgb(31 61 43 / 0.15);
+  --shadow-lift:
+    0 2px 6px rgb(31 61 43 / 0.07), 0 20px 45px -15px rgb(31 61 43 / 0.22);
+}
+
+::selection {
+  background: var(--color-lime-soft);
+  color: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-leaf);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+/* Plynulé odhalení sekcí při scrollu — řídí komponenta <Reveal/>.
+   Skrývá se jen s classou .js na <html> → bez JavaScriptu je vše viditelné. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Jemné papírové zrno na velkých plochách */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Gradient značky (z instagramového loga) */
+.text-brand-gradient {
+  background: linear-gradient(105deg, var(--color-teal), var(--color-lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bg-brand-gradient {
+  background-image: linear-gradient(115deg, var(--color-teal), var(--color-lime));
+}
