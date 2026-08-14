@@ -1,0 +1,12 @@
+# závislosti a build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# generované obrázky (vyrábí scripts/prepare-photos.mjs při buildu)
+public/photos/
+
+# systémový balast
+.DS_Store
+npm-debug.log*
